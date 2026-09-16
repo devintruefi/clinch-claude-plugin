@@ -1,6 +1,6 @@
 ---
 name: clinch-import-from-crm
-description: Use this skill when the user wants to bring deal data from their CRM into Clinch. Triggers on phrases like "import my closed deals from Salesforce / HubSpot / Pipedrive / Lightfield", "log last quarter's losses to Clinch", "sync my CRM with Clinch", "from my pipeline, log every deal where {competitor} was on it", or "fill in Clinch from my CRM". CRM-agnostic by design: Claude uses whichever CRM connector the user has installed. Requires the Clinch custom connector with write scope.
+description: Use this skill when the user wants to bring deal data from their CRM into Clinch. Triggers on phrases like "import my closed deals from Salesforce / HubSpot / Pipedrive / Lightfield", "log last quarter's losses to Clinch", "sync my CRM with Clinch", "from my pipeline, log every deal where {competitor} was on it", or "fill in Clinch from my CRM". CRM-agnostic by design. Claude uses whichever CRM connector the user has installed. Requires the Clinch custom connector with write scope.
 ---
 
 # Clinch import from CRM
