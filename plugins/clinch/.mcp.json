@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "clinch": {
+      "type": "http",
+      "url": "https://www.getclinch.ai/api/mcp"
+    }
+  }
+}
