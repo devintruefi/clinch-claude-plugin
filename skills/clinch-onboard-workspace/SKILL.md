@@ -112,7 +112,7 @@ When in doubt, pass only website_url and let the server discover the rest.
    - Internal "vs X" Notion pages → candidate `loss_reasons` / `win_reasons`.
 10. Synthesize each candidate into 1-3 short paragraphs in the user's voice. Quote the source when you can. Never fabricate.
 11. **Present the synthesized text to the user in chat** before writing. One competitor at a time, or grouped by 3-5 if the user prefers. Show evidence sources inline.
-12. After explicit confirmation, call `set_competitive_context` per competitor with `merge_mode: "merge"` (default) and a one-sentence `evidence` argument naming the source. Use `replace` only when the user has explicitly asked to overwrite existing text.
+12. After explicit confirmation, call `set_competitive_context` per competitor with `merge_mode: "merge"` (default) and a one-sentence `evidence` argument naming the source. Use `merge_mode: "append"` to add to text a teammate already wrote. If the user explicitly asks to overwrite existing text, show the current and new text and, after they confirm, call `replace_competitive_context`.
 
 ### Step 5: Fill the company profile
 
@@ -127,7 +127,8 @@ When in doubt, pass only website_url and let the server discover the rest.
 ### Step 6: Hand off
 
 17. Summarize what was written. Numbers + names: "Added 4 competitors. Updated competitive_context on 7 competitors. Filled 2 company_profile fields. Skipped 3 because the source data was thin and I did not want to fabricate."
-18. Suggest the user open `/timeline` in Clinch to see the first snapshots roll in over the next few minutes, and `/battlecards` after the first regen cycle to read the now-grounded battlecards.
+18. Call `complete_setup` with `sources` (the connectors you read, lowercase, for example "salesforce", "notion", "gong"), `competitors_added`, `context_updates` (competitors whose context you updated) and `profile_fields_filled`. Pass `surface` "cowork", "claude_code" or "claude_chat" depending on where you are running, and leave `plugin_version` out. This tells Clinch setup is done so it stops showing setup reminders.
+19. Suggest the user open `/timeline` in Clinch to see the first snapshots roll in over the next few minutes, and `/battlecards` after the first regen cycle to read the now-grounded battlecards.
 
 ## Composability
 
@@ -141,7 +142,7 @@ Hand-offs after this skill completes:
 ## Quality bar
 
 - **Never fabricate evidence.** Every write must trace back to a specific CRM record id, transcript timestamp, doc page, or user statement. The `evidence` argument is the audit trail.
-- **Never silently overwrite.** The default merge_mode for both write tools is `merge`, which only fills empty fields. If the user wants you to replace something they wrote, they must say so explicitly and you must confirm the proposed text before writing.
+- **Never silently overwrite.** `set_competitive_context` and `set_company_profile_field` never overwrite: `merge` (the default) fills empty fields and `append` adds text. If the user wants to replace something they wrote, they must say so explicitly; confirm the proposed text, then use `replace_competitive_context` or `replace_company_profile_field`.
 - **Never bulk-write without confirmation.** Adding 4 competitors in parallel is fine; doing it without showing the user the list and getting an explicit "go" is not.
 - **Never guess URLs.** See URL HANDLING above.
 - **Tell the user what you skipped and why.** A 7-add / 4-skip output is honest. A 11-add output that includes 4 guesses is worse than an empty workspace because the user trusts the bad data.

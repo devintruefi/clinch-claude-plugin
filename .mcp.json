@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "clinch": {
+      "type": "http",
+      "url": "https://www.getclinch.ai/api/mcp",
+      "headers": {
+        "x-clinch-plugin-version": "1.3.0"
+      }
+    }
+  }
+}

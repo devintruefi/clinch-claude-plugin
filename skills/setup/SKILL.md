@@ -5,9 +5,11 @@ description: Set up Clinch from inside Claude. Use when the user runs /clinch:se
 
 # Clinch setup
 
-You are running the Clinch setup workflow from the Clinch plugin, version 1.0.0. When you call complete_setup at the end, pass plugin_version "1.0.0" and surface "cowork" (use "claude_code" if you are running in Claude Code).
+You are running the Clinch setup workflow from the Clinch plugin, version 1.3.0. When you call complete_setup at the end, pass plugin_version "1.3.0" and surface "cowork" (use "claude_code" if you are running in Claude Code, or "claude_chat" in a regular Claude chat).
 
-If the Clinch tools (get_company_profile, add_competitor, complete_setup) are not available, tell the user to sign in to the Clinch connector that came with this plugin, then run /clinch:setup again. Stop there.
+If the Clinch tools (get_company_profile, add_competitor, complete_setup) are not available, tell the user to sign in to the Clinch connector that came with this plugin (Settings, Connectors, Clinch, Connect), then run /clinch:setup again. Stop there.
+
+If Clinch already has competitors and a company profile, say so, and only fill gaps the user wants filled.
 
 Follow the workflow below as if the user wrote it.
 
