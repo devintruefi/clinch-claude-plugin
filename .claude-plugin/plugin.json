@@ -1,6 +1,6 @@
 {
   "name": "clinch",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "description": "Competitive intelligence from Clinch inside Claude: battlecards, pricing history, pre-call briefs, win/loss logging, and guided workspace setup.",
   "author": {
     "name": "Clinch",
@@ -9,5 +9,8 @@
   "homepage": "https://www.getclinch.ai/clinch-for-claude",
   "repository": "https://github.com/devintruefi/clinch-claude-plugin",
   "license": "MIT",
-  "privacyPolicyUrl": "https://www.getclinch.ai/privacy"
+  "privacyPolicyUrl": "https://www.getclinch.ai/privacy",
+  "termsOfServiceUrl": "https://www.getclinch.ai/terms",
+  "documentationUrl": "https://www.getclinch.ai/clinch-for-claude",
+  "supportUrl": "mailto:hello@getclinch.ai"
 }
